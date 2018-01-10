@@ -1,2 +1,0 @@
-# CSC4996_TODO_LIST
-CSC4996 first project
