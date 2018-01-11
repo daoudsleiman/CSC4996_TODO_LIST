@@ -18,19 +18,19 @@
 
 			if (mysqli_connect_errno())//error checking
 		 	{
-		  		echo "database connection failed. Error message: " . mysqli_connect_error();
+		  		echo "Database connection failed. Error message: " . mysqli_connect_error();
 		  	}
 		}
 
 		public function close_connection()//closes database connection
 		{
-			if($this->connection != "")//checks if connection string is nyll
+			if($this->connection != "")//checks if connection string is null
 			{
 				mysqli_close($this->connection);
 			}
 			else
 			{
-				echo "database connection is not active";
+				echo "Database connection is not active";
 			}
 		}
 

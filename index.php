@@ -25,12 +25,21 @@
 	<div class="jumbotron" align="center"><h1>TODO List</h1></div>
 
 	<div class="container">
-		
-		IN PROGRESS HERE -- ADD BUTTONS THAT FILTER BY STATUS WHEN CLICKED
+		<div align="center">
+			<h4>Click to change status view</h4>
+
+			<div class="row">
+				<button class="btn btn-info">Started</button>
+				<button class="btn btn-warning">Pending</button>
+				<button class="btn btn-success">Completed</button>
+				<button class="btn btn-danger">Late</button>
+			</div>
+
+		</div>
 
 		<!-- Create new task button -->
 		<div align="right">
-			<button id="create_new_task" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Task</button>
+			<button id="create_new_task" class="btn btn-success" data-toggle="modal" data-target="#create_task_modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Task</button>
 			<br/><br/>
 		</div>
 
@@ -66,8 +75,49 @@
 
 </body>
 
+<!-- Create Task Modal -->
+<div class="modal fade" id="create_task_modal" role="dialog">
+	 <div class="vertical-alignment-helper"> <!-- aligns modal center vertically -->
+        <div class="modal-dialog vertical-align-center"><!-- aligns modal center horizontally -->
+			<div class="modal-content">
+				<div class="modal-header bg-success">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title">Create a New Task</h3>
+				</div>
+				<div class="modal-body">
+					<form id="new_task_form">
+						<label for="name">Name:</label>
+						<input type="text" class="form-control" id="name" name="name" placeholder="Enter a name for the task"/><br/>
+
+						<label for="status">Status:</label>
+						<select class="form-control" id="status" name="status">
+							<option>Make a Selection</option>
+							<option value="STARTED">Started</option>
+							<option value="PENDING">Pending</option>
+							<option value="COMPLETED">Completed</option>
+							<option value="LATE">Late</option>
+						</select><br/>
+
+						<label for="date">Due Date:</label>
+						<input type="date" class="form-control" id="date" name="date" placeholder="Enter a due date for the task"/>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-success" style="float:left;">Submit</button>
+					<button class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
 <!--JS file-->
 <script src="js/scripts.js"></script>
+<!-- JQuery JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--Bootstrap JS-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
