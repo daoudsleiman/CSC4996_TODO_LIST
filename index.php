@@ -1,6 +1,6 @@
 <?php
-	include("class_declarations.php");
-	include("utilities.php");
+	include("classes/class_declarations.php");
+	include("utilities/utilities.php");
 
 	$db = new Database();
 	$tasks = fetch_all_tasks($db);
