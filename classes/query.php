@@ -55,7 +55,7 @@
 			$db->close_connection();
 		}
 
-		public function multiQueryDB($sql)
+		public function multiQueryDB($sql) //for inserting an deleting multiple queries in same string
 		{
 			$db = new Database;
 			$db->open_connection();

@@ -1,14 +1,13 @@
 <?php
 	include("utilities/utilities.php");
 
-	//start functions
 	$tasks = initialize_tasks();
+
 	$total = count_tasks('');
 	$started = count_tasks('STARTED');
 	$pending = count_tasks('PENDING');
 	$completed = count_tasks('COMPLETED');
 	$late = count_tasks('LATE');
-	//end functions
 ?>
 
 <!DOCTYPE HTML>
@@ -26,6 +25,10 @@
 
 </head>
 
+<style>
+	.dataTables_filter { display: none; }
+</style>
+
 <body>
 	<!-- TODO list header -->
 	<div class="jumbotron" align="center"><h1>TODO List</h1></div>
@@ -35,11 +38,11 @@
 			<h4>Click to change status view</h4>
 
 			<div class="row">
-				<button class="btn btn-default">Show All: <?= $total?></button>
-				<button class="btn btn-info">Started: <?= $started?></button>
-				<button class="btn btn-warning">Pending: <?= $pending?></button>
-				<button class="btn btn-success">Completed: <?= $completed?></button>
-				<button class="btn btn-danger">Late: <?= $late?></button>
+				<button class="btn btn-default filters" data-id="ALL">Show All: <?= $total?></button>
+				<button class="btn btn-info filters" data-id="STARTED">Started: <?= $started?></button>
+				<button class="btn btn-warning filters" data-id="PENDING">Pending: <?= $pending?></button>
+				<button class="btn btn-success filters" data-id="COMPLETED">Completed: <?= $completed?></button>
+				<button class="btn btn-danger filters" data-id="LATE">Late: <?= $late?></button>
 			</div>
 
 		</div>

@@ -1,5 +1,8 @@
 $(document).ready(function(){
-    $('#task_table').DataTable();
+    var task_table = $('#task_table').DataTable({
+        "bLengthChange": false //hide "show entries"
+
+    }); //initialize JQuery datatable
 
     $("#submit_new_task").click(function(){ //JQuery on click
         var name = $('#name').val();
@@ -42,6 +45,21 @@ $(document).ready(function(){
               window.location.reload();
             }
           });
+
+    });
+
+    $(".filters").click(function(){ 
+
+        var filter = $(this).attr("data-id");
+
+        if(filter == 'ALL')
+        {
+            task_table.search("").draw(); //use datatables search box to filter
+        }
+        else
+        {
+            task_table.search(filter).draw();
+        }   
 
     });
 
