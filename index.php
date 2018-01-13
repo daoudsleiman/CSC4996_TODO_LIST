@@ -21,6 +21,8 @@
 
 	<!--Bootstrap CSS-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- JQuery Datatables CSS -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -28,7 +30,7 @@
 	<!-- TODO list header -->
 	<div class="jumbotron" align="center"><h1>TODO List</h1></div>
 
-	<div class="container">
+	<div class="container" style="padding-bottom: 100px">
 		<div align="center">
 			<h4>Click to change status view</h4>
 
@@ -117,6 +119,8 @@
 
 <!-- JQuery JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- JQuery Datatables JS -->
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <!--Bootstrap JS-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--JS file-->

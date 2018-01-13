@@ -1,13 +1,14 @@
 $(document).ready(function(){
+    $('#task_table').DataTable();
 
-    $("#submit_new_task").click(function(){
+    $("#submit_new_task").click(function(){ //JQuery on click
         var name = $('#name').val();
         var status = $('#status').val();
         var due_date = $('#due_date').val();
 
         if(name != '' && status != '' && due_date != '')
         {	
-	        $.ajax({
+	        $.ajax({ //ajax to php handler
 	            type: 'POST',
 	            url: 'ajax/insert_new_task.php',
 	            data: {
@@ -16,7 +17,6 @@ $(document).ready(function(){
 	            	  	due_date:due_date
 	            },
 	            success: function () {
-                    alert(due_date);
 	              alert('Task Created');
 	              window.location.reload();
 	            }
@@ -28,10 +28,10 @@ $(document).ready(function(){
     	}
     });
 
-    $(".delete_task_btn").click(function(){
+    $(".delete_task_btn").click(function(){ //JQuery on click, had to use class because multiple delete buttons
         var id = $(this).attr("data-id");
 
-        $.ajax({
+        $.ajax({ //ajax to php handler
             type: 'POST',
             url: 'ajax/delete_task.php',
             data: {
