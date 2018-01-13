@@ -1,9 +1,14 @@
 <?php
-	include("classes/class_declarations.php");
 	include("utilities/utilities.php");
 
-	$db = new Database();
-	$tasks = fetch_all_tasks($db);
+	//start functions
+	$tasks = initialize_tasks();
+	$total = count_tasks('');
+	$started = count_tasks('STARTED');
+	$pending = count_tasks('PENDING');
+	$completed = count_tasks('COMPLETED');
+	$late = count_tasks('LATE');
+	//end functions
 ?>
 
 <!DOCTYPE HTML>
@@ -14,7 +19,6 @@
 
 	<title>TODO List</title>
 
-	<link rel="stylesheet" href="css/style.css">
 	<!--Bootstrap CSS-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -29,10 +33,11 @@
 			<h4>Click to change status view</h4>
 
 			<div class="row">
-				<button class="btn btn-info">Started</button>
-				<button class="btn btn-warning">Pending</button>
-				<button class="btn btn-success">Completed</button>
-				<button class="btn btn-danger">Late</button>
+				<button class="btn btn-default">Show All: <?= $total?></button>
+				<button class="btn btn-info">Started: <?= $started?></button>
+				<button class="btn btn-warning">Pending: <?= $pending?></button>
+				<button class="btn btn-success">Completed: <?= $completed?></button>
+				<button class="btn btn-danger">Late: <?= $late?></button>
 			</div>
 
 		</div>
@@ -49,24 +54,23 @@
 				<th>Task ID</th>
 				<th>Task Name</th>
 				<th>Status</th>
-				<th>Due Date</th>
+				<th>Due Date (YYYY-MM-DD)</th>
 				<th>Delete</th>
 			</thead>
 
 			<tbody>
 				<?php 
-					$i=0;
-					while($i< sizeof($tasks))
+					foreach ($tasks as $task)
 					{
 				?>
 					<tr>
-						<td><?= $tasks[$i]['ID']?></td>
-						<td><?= $tasks[$i]['TASK_NAME']?></td>
-						<td><?= $tasks[$i]['STATUS']?></td>
-						<td></td>
-						<td align="center"><button class="btn btn-danger" data-id="<?= $tasks[$i]['ID']?>"><span class="glyphicon glyphicon-trash" aria-hidden="true"></button></td>
+						<td><?= $task->get_id() ?></td>
+						<td><?= $task->get_name()?></td>
+						<td><?= $task->get_status()?></td>
+						<td><?= $task->get_due_date() ?></td>
+						<td align="center"><button class="btn btn-danger delete_task_btn" data-id="<?= $task->get_id() ?>"><span class="glyphicon glyphicon-trash" aria-hidden="true"></button></td>
 					</tr>
-				<?	$i++;}
+				<?	}
 				?>
 			</tbody>
 		</table>
@@ -99,11 +103,11 @@
 						</select><br/>
 
 						<label for="date">Due Date:</label>
-						<input type="date" class="form-control" id="date" name="date" placeholder="Enter a due date for the task"/>
+						<input type="date" class="form-control" id="due_date" name="due_date" placeholder="Enter a due date for the task"/>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-success" style="float:left;">Submit</button>
+					<button class="btn btn-success" style="float:left;" id="submit_new_task">Submit</button>
 					<button class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -111,14 +115,11 @@
 	</div>
 </div>
 
-
-
-
-<!--JS file-->
-<script src="js/scripts.js"></script>
 <!-- JQuery JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--Bootstrap JS-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--JS file-->
+<script src="js/scripts.js"></script>
 
 </html>
