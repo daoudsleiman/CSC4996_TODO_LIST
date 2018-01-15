@@ -75,7 +75,7 @@
 						<td><?= $task->get_due_date() ?></td>
 						<td align="center"><button class="btn btn-danger delete_task_btn" data-id="<?= $task->get_id() ?>"><span class="glyphicon glyphicon-trash" aria-hidden="true"></button></td>
 					</tr>
-				<?	}
+				<?php	}
 				?>
 			</tbody>
 		</table>

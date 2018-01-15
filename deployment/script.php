@@ -74,3 +74,5 @@
 	$conn2->close();
 
 ?>
+
+<a href="../index.php">Home</a>
